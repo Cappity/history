@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal Antiquity | Historical Documentary Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-base: #0a0b0e;
+      --bg-surface: #12141a;
+      --bg-card: #181b23;
+      --gold-primary: #d4af37;
+      --gold-muted: #997e2c;
+      --text-main: #f3f4f6;
+      --text-dim: #9ca3af;
+      --border-subtle: rgba(212, 175, 55, 0.15);
+      --font-display: 'Cinzel', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient Background Glow */
+    .ambient-glow {
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(10, 11, 14, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--gold-primary);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-dim);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .nav-btn:hover {
+      color: var(--gold-primary);
+      border-color: var(--border-subtle);
+    }
+
+    .nav-btn.active {
+      color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.1);
+      border-color: var(--gold-primary);
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* Sections / View Architecture */
+    .view-section {
+      display: none;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero / Video View */
+    .hero-heading {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .hero-heading h1 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: #fff;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-heading p {
+      color: var(--gold-primary);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .video-viewport {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      margin-bottom: 2.5rem;
+    }
+
+    .video-viewport iframe,
+    .video-viewport video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Interactive Timeline Component */
+    .timeline {
+      position: relative;
+      border-left: 2px solid var(--border-subtle);
+      margin-left: 1rem;
+      padding-left: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .timeline-node {
+      position: relative;
+    }
+
+    .timeline-node::before {
+      content: '';
+      position: absolute;
+      left: -1.95rem;
+      top: 0.3rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gold-primary);
+      border: 3px solid var(--bg-base);
+    }
+
+    .timeline-node h3 {
+      font-family: var(--font-display);
+      color: var(--gold-primary);
+      font-size: 1.1rem;
+    }
+
+    .timeline-node span {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 1.5rem;
+      border-radius: 10px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-primary);
+    }
+
+    .card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--gold-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold-muted);
+      border: 1px solid var(--gold-muted);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero-heading h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <header>
+    <div class="brand">JURIS·ANTIQUA</div>
+    <nav>
+      <button class="nav-btn active" onclick="showSection('watch')">Documentary</button>
+      <button class="nav-btn" onclick="showSection('analysis')">Analysis</button>
+      <button class="nav-btn" onclick="showSection('sources')">Sources</button>
+      <button class="nav-btn" onclick="showSection('timeline')">Chronology</button>
+      <button class="nav-btn" onclick="showSection('credits')">Credits</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="watch" class="view-section active">
+      <div class="hero-heading">
+        <p>Faculty of Law · History-I Assessment Project</p>
+        <h1 id="doc-title">Codices of the Realm: Jurisprudence in Antiquity</h1>
+      </div>
+
+      <div class="video-viewport">
+        <iframe 
+          src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0" 
+          title="Documentary Video Presentation" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="card">
+        <h3>Synopsis & Scope</h3>
+        <p>This documentary investigates the transformation of procedural, penal, and civil administrative apparatuses across Ancient and Medieval India. Analyzing legal codification from early Vedic assemblies (*Sabha* and *Samiti*) to the administrative edicts of the Maurya and Mughal administrations, the film deconstructs how political sovereignty drew validity from custom, religious edicts, and institutionalized jurisprudence.</p>
+      </div>
+    </section>
+
+    <section id="analysis" class="view-section">
+      <div class="hero-heading">
+        <p>Academic Deconstruction</p>
+        <h1>Key Jurisprudential Themes</h1>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <span class="badge">Institutions</span>
+          <h3>Adjudication & Courts</h3>
+          <p>The hierarchy of judicial mechanisms: King's court (*Dharmasthiya*), regional courts, guild tribunals (*Puga*, *Shreni*), and community elders (*Kula*), showing decentralized dispute resolution.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Substantive Law</span>
+          <h3>Vyavahara (Civil Procedure)</h3>
+          <p>Evaluation of the eighteen titles of law (*Ashtadasa Vivadapadani*), tracing early principles of contract, boundaries, debt, inheritance, and partnerships.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Evidence</span>
+          <h3>Pramana (Evidentiary Standards)</h3>
+          <p>Threefold categories of proof: Human testimony (*Sakshin*), written instruments (*Lekhya*), and possession/custom (*Bhukti*), supplemented by *Divya* (ordeals) only when evidentiary chains broke.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources" class="view-section">
+      <div class="hero-heading">
+        <p>Bibliography & Archival Records</p>
+        <h1>Primary & Secondary Sources</h1>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Arthaśāstra of Kauṭilya</h3>
+          <p class="badge">Treatise on Statecraft</p>
+          <p>Book III & IV providing early codification of criminal suppression (*Kantakasodhana*) and civil adjudications (*Dharmasthiya*).</p>
+        </div>
+        <div class="card">
+          <h3>Yājñavalkya Smṛti</h3>
+          <p class="badge">Dharmashastra Tradition</p>
+          <p>Noted for legal precision and structural development of legal procedure (*Vyavaharadhyaya*), heavily cited in medieval commentaries like the *Mitākṣarā*.</p>
+        </div>
+        <div class="card">
+          <h3>Fatāwā-e-Ālamgīrī</h3>
+          <p class="badge">Mughal Legal Canon</p>
+          <p>The Hanafi-law-based legal compilation commissioned during the 17th century, governing imperial judicial administration.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" class="view-section">
+      <div class="hero-heading">
+        <p>Structural Context</p>
+        <h1>Historical Timeline</h1>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-node">
+          <span>c. 1500 BCE – 600 BCE</span>
+          <h3>Vedic Assemblies & Customary Norms</h3>
+          <p>Norms dictated through societal consensus; dispute resolution administered via collective bodies (*Sabha* and *Samiti*).</p>
+        </div>
+        <div class="timeline-node">
+          <span>c. 320 BCE – 185 BCE</span>
+          <h3>The Mauryan Bureaucratic Legal Framework</h3>
+          <p>Centralized codification under Kautilyan doctrines; separation of civic-legal jurisdictions and deployment of royal edicts (*Sasana*).</p>
+        </div>
+        <div class="timeline-node">
+          <span>c. 300 CE – 1100 CE</span>
+          <h3>Smriti Commentaries & Procedural Refinements</h3>
+          <p>Elaboration of court procedures, documentary execution, evidentiary rules, and succession rules by legal commentators like Vijnaneshwara.</p>
+        </div>
+        <div class="timeline-node">
+          <span>c. 1206 CE – 1707 CE</span>
+          <h3>Sultanate & Mughal Islamic Jurisprudence</h3>
+          <p>Introduction of sharia courts (*Qazi*), secular decrees (*Jawabit*), and municipal police administrators (*Kotwal*).</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="credits" class="view-section">
+      <div class="hero-heading">
+        <p>Project Production Team</p>
+        <h1>Group Contributors</h1>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Lead Research & Narration</h3>
+          <p class="badge">Student Name / PRN</p>
+          <p>Scripting, textual verification of Smriti sources, and voiceover synchronization.</p>
+        </div>
+        <div class="card">
+          <h3>Direction & Post-Production</h3>
+          <p class="badge">Student Name / PRN</p>
+          <p>Video editing, archival visual sourcing, transitions, and audio mastering.</p>
+        </div>
+        <div class="card">
+          <h3>Archival Analysis & Web Setup</h3>
+          <p class="badge">Student Name / PRN</p>
+          <p>Primary source compilation, digital interface engineering, and deployment.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>History-I Assessment Submission · 2026 Academic Session · Law School</p>
+  </footer>
+
+  <script>
+    function showSection(sectionId) {
+      // Toggle display
+      const sections = document.querySelectorAll('.view-section');
+      sections.forEach(sec => sec.classList.remove('active'));
+
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.classList.add('active');
+      }
+
+      // Toggle active states in nav
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      const activeBtn = Array.from(buttons).find(b => 
+        b.getAttribute('onclick').includes(sectionId)
+      );
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+
+      // Smooth scroll to top of view
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
