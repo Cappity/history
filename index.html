@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARCHIVE // Legal Institutions & Antiquity</title>
+  <title>DOCUMENTARY ARCHIVE</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -374,7 +374,7 @@
       line-height: 1.7;
     }
 
-    /* Interactive Live Sound Visualizer Simulation */
+    /* Visualizer Canvas */
     canvas#visualizer {
       width: 100%;
       height: 70px;
@@ -408,7 +408,7 @@
   <div class="film-grain"></div>
 
   <div id="preloader">
-    <div class="preloader-monogram">JURIS // ARCHIVE</div>
+    <div class="preloader-monogram">PROJECT // CINEMA</div>
     <div class="loader-track">
       <div class="loader-bar" id="load-bar"></div>
     </div>
@@ -417,11 +417,11 @@
   <header>
     <div class="logo">
       <div class="logo-diamond"></div>
-      LEGAL ANTIQUITY
+      DOCUMENTARY FILM
     </div>
     <nav class="nav-tabs">
-      <button class="nav-tab active" onclick="switchView('overview')">Documentary</button>
-      <button class="nav-tab" onclick="switchView('exhibits')">Exhibits & Dossier</button>
+      <button class="nav-tab active" onclick="switchView('overview')">Film Screen</button>
+      <button class="nav-tab" onclick="switchView('research')">Research Dossier</button>
       <button class="nav-tab" onclick="switchView('production')">Production Crew</button>
     </nav>
   </header>
@@ -429,9 +429,9 @@
   <main>
     <div id="view-overview" class="view-panel active">
       <div class="hero-container">
-        <span class="hero-tag">Second Internal Assessment // History-I</span>
-        <h1 class="hero-title">Edicts, Codices & Sovereignty</h1>
-        <p class="hero-desc">An empirical documentary deconstructing the transition of legal institutions, statecraft, and procedural jurisprudence across Ancient and Medieval India.</p>
+        <span class="hero-tag">Official Submission</span>
+        <h1 class="hero-title">Documentary Title</h1>
+        <p class="hero-desc">Enter your documentary's core question or logline here.</p>
       </div>
 
       <div class="player-stage">
@@ -439,7 +439,7 @@
         <div class="screen-wrapper">
           <iframe 
             src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0&modestbranding=1" 
-            title="Assignment Documentary Video" 
+            title="Documentary Video" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen>
           </iframe>
@@ -457,69 +457,69 @@
 
       <div class="bento-grid">
         <div class="bento-item col-8">
-          <div class="card-label"><i class="fa-solid fa-scroll"></i> Assignment Scope</div>
-          <h2 class="card-title">Institutional Evolution</h2>
-          <p class="card-body">The documentary analyzes dispute resolution mechanisms, judicial hierarchies, and penal codification. It navigates from the decentralised deliberation of the early assemblies through to the secular state machinery of the Mauryan period and the dual legal administrations of the medieval era.</p>
+          <div class="card-label"><i class="fa-solid fa-film"></i> Overview</div>
+          <h2 class="card-title">Documentary Synopsis</h2>
+          <p class="card-body">Add your project synopsis, summary, and primary thesis here once you finalize your focus area.</p>
         </div>
         <div class="bento-item col-4">
           <div class="card-label"><i class="fa-solid fa-wave-square"></i> Audio Signal</div>
-          <h2 class="card-title">Score & Acoustics</h2>
-          <p class="card-body">Original mastering and audio narration frequency tracker.</p>
+          <h2 class="card-title">Score & Narration</h2>
+          <p class="card-body">Live waveform monitor tracking master audio output.</p>
           <canvas id="visualizer"></canvas>
         </div>
       </div>
     </div>
 
-    <div id="view-exhibits" class="view-panel">
+    <div id="view-research" class="view-panel">
       <div class="hero-container">
-        <span class="hero-tag">Primary Records</span>
-        <h1 class="hero-title">Archival Evidence</h1>
-        <p class="hero-desc">Textual, epigraphical, and doctrinal frameworks cited in the documentary.</p>
+        <span class="hero-tag">Dossier</span>
+        <h1 class="hero-title">Research & Analysis</h1>
+        <p class="hero-desc">Documentary themes, background findings, and references.</p>
       </div>
 
       <div class="bento-grid">
         <div class="bento-item col-4">
-          <div class="card-label">Treatise Analysis</div>
-          <h3 class="card-title">Arthaśāstra (Kauṭilya)</h3>
-          <p class="card-body">Analysis of secular political mechanics, focusing on Book III (Civil Law) and Book IV (Removal of Thorns / Criminal Procedure), balancing state intelligence with public judicial administration.</p>
+          <div class="card-label">Focus Area 01</div>
+          <h3 class="card-title">Module Title</h3>
+          <p class="card-body">Add relevant background analysis, source breakdowns, or theoretical framework notes here.</p>
         </div>
         <div class="bento-item col-4">
-          <div class="card-label">Dharmashastra Jurisprudence</div>
-          <h3 class="card-title">Yājñavalkya Smṛti</h3>
-          <p class="card-body">Exploration of procedural jurisprudence (*Vyavahāra*), focusing on rules of evidence (*Pramāna*), witness credibility (*Sakshin*), and the validity of documented instruments (*Lekhya*).</p>
+          <div class="card-label">Focus Area 02</div>
+          <h3 class="card-title">Module Title</h3>
+          <p class="card-body">Add relevant background analysis, source breakdowns, or theoretical framework notes here.</p>
         </div>
         <div class="bento-item col-4">
-          <div class="card-label">Medieval Codification</div>
-          <h3 class="card-title">Fatāwā-i-Ālamgīrī</h3>
-          <p class="card-body">Examination of centralized Islamic judicial administration in the 17th century, focusing on the jurisdiction of the *Qazi* and the codification of imperial penal decrees.</p>
+          <div class="card-label">Focus Area 03</div>
+          <h3 class="card-title">Module Title</h3>
+          <p class="card-body">Add relevant background analysis, source breakdowns, or theoretical framework notes here.</p>
         </div>
       </div>
     </div>
 
     <div id="view-production" class="view-panel">
       <div class="hero-container">
-        <span class="hero-tag">Credits & Specifications</span>
-        <h1 class="hero-title">Production Unit</h1>
-        <p class="hero-desc">Academic research, screenplay, editing, and technical infrastructure.</p>
+        <span class="hero-tag">Credits</span>
+        <h1 class="hero-title">Production Crew</h1>
+        <p class="hero-desc">Core contributors and team members.</p>
       </div>
 
       <div class="bento-grid">
         <div class="bento-item col-6">
-          <div class="card-label">Research & Narrative Direction</div>
-          <h3 class="card-title">Historiographical Research</h3>
-          <p class="card-body">Historical verification, primary translation validation, script development, and faculty consultation compliance.</p>
+          <div class="card-label">Production Unit</div>
+          <h3 class="card-title">Role / Department</h3>
+          <p class="card-body">Member names, PRN/Roll numbers, and contribution notes.</p>
         </div>
         <div class="bento-item col-6">
-          <div class="card-label">Visual Engineering</div>
-          <h3 class="card-title">Post-Production & Web Archival</h3>
-          <p class="card-body">Motion graphics, documentary montage editing, sound equalization, and custom interactive web platform deployment.</p>
+          <div class="card-label">Technical Unit</div>
+          <h3 class="card-title">Role / Department</h3>
+          <p class="card-body">Member names, PRN/Roll numbers, and contribution notes.</p>
         </div>
       </div>
     </div>
   </main>
 
   <footer>
-    <p>HISTORY-I ASSESSMENT // ACADEMIC YEAR 2026 // FACULTY OF LAW</p>
+    <p>DOCUMENTARY PRODUCTION // INTERNAL ASSESSMENT</p>
   </footer>
 
   <script>
@@ -555,7 +555,6 @@
 
     camera.position.z = 4;
 
-    // Subtle interactive motion on pointer move
     let mouseX = 0, mouseY = 0;
     window.addEventListener('mousemove', (e) => {
       mouseX = (e.clientX / window.innerWidth - 0.5) * 0.3;
@@ -625,7 +624,6 @@
         }
       });
 
-      // Tab UI state update
       document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
       const activeTab = Array.from(document.querySelectorAll('.nav-tab')).find(btn => 
         btn.getAttribute('onclick').includes(viewKey)
